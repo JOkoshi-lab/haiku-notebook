@@ -1,0 +1,6 @@
+CREATE TABLE haiku (
+    id VARCHAR(8) PRIMARY KEY,
+    haiku VARCHAR(500) NOT NULL,
+    poem_date VARCHAR(10) NOT NULL,
+    likes INT NOT NULL DEFAULT 0
+);

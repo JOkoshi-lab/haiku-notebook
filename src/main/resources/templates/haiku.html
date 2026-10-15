@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>句帳</title>
+</head>
+
+<body>
+    <h1>句帳</h1>
+    <div>
+        <h2>句を詠む</h2>
+        <form action="/addhaiku">
+            <label>俳句</label>
+            <input name="haiku" type="text" />
+            <label>日付</label>
+            <input name="date" type="date" />
+            <input type="submit" value="登録" />
+        </form>
+    </div>
+
+    <div>
+        <h2>句を振り返る</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>俳句</th>
+                    <th>日付</th>
+                    <th>いいね</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="haiku : ${haikuList}">
+                    <td th:text="${haiku.id}"></td>
+                    <td th:text="${haiku.haiku}"></td>
+                    <td th:text="${haiku.date}"></td>
+                    <td th:text="${haiku.likes}"></td>
+                    <td>
+                        <form action="/like">
+
+                            <button type="submit">いいね</button>
+                            <input type="hidden" name="id" th:value="${haiku.id}" />
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
